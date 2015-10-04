@@ -1,0 +1,29 @@
+{
+  "name": "Error Codes",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Contains the definations of error codes thrown by server",
+  "author": "Dilip Mandadi",
+  "Error_Codes" : 
+  {
+    "General": 
+    {
+      "777": "Success"
+    },
+
+    "Authentication_Errors":
+    {
+      "101": "User Not Authenticated",
+      "102": "Incorrect username or password",
+      "103": "You do not have the permission to access this resource"
+    },
+
+    "Data_Errors":
+    {
+      "401": "Required data not found/input not passed correctly",
+      "402": "Database Error",
+      "403": "Duplicate value inserted"
+    }
+
+  }
+}

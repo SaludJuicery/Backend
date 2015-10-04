@@ -1,0 +1,22 @@
+{
+  "name": "Error Codes",
+  "version": "0.0.0",
+  "private": true,
+  "description": "This is used to communicate API description to frontend developers",
+  "author": "Dilip Mandadi",
+  "API Reference" : 
+  {
+    "/menu/createCategory":
+    {
+      "required_input": "Needs 'category_name' to be sent visa post request",
+      "output": 
+      {
+        "777": "Success",
+        "401": "Required data not found/input not passed correctly",
+        "402": "Database Error",
+        "103": "You do not have the permission to access this resource",
+        "403": "Duplicate value inserted"
+      }
+    }
+  }
+}

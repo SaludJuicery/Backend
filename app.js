@@ -1,4 +1,4 @@
-﻿var express = require('express');
+var express = require('express');
 var session = require('express-session');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -9,6 +9,7 @@ var bcrypt = require('bcryptjs');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var OAuth2Strategy = require('passport-oauth2').Strategy;
+var mysql = require('mysql');
 //var FacebookTokenStrategy = require('passport-facebook-token').Strategy;
 
 var app = express();
@@ -19,6 +20,7 @@ var Model = require('./models/model');
 var logout = require('./routes/passport/logout.js');
 var passportLocal = require('./routes/passport/passportLocal.js');
 var facebookAuth = require('./routes/passport/facebookAuth.js');
+var createCategory =  require('./routes/menu/createCategory.js')
 
 
 
@@ -116,9 +118,10 @@ passport.use(new OAuth2Strategy({
 
 
 app.use('/', routes);
-app.post('/dbLogin', passportLocal.dbLoginPost);
-app.post('/facebookAuth', facebookAuth.fbLoginPost);
-app.post('/logout', logout.logout);
+app.post('/auth/login', passportLocal.dbLoginPost);
+app.post('/auth/facebookAuth', facebookAuth.fbLoginPost);
+app.post('/auth/logout', logout.logout);
+app.post('/menu/createCategory', createCategory.insertCategory);
 
 
 // catch 404 and forward to error handler

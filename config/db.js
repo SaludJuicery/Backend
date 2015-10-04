@@ -1,4 +1,4 @@
-﻿var knex = require('knex')({
+var knex = require('knex')({
 	client: 'mysql',
 	connection: {
 		host: 'saluddb.cazv88oyo3vo.us-west-2.rds.amazonaws.com',  // your host

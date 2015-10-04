@@ -1,4 +1,4 @@
-﻿var DB = require('../config/db').DB;
+var DB = require('../config/db').DB;
 
 var DBUser = DB.Model.extend({
 	tableName: 'users',
@@ -8,3 +8,5 @@ var DBUser = DB.Model.extend({
 module.exports = {
 	DBUser: DBUser
 };
+
+//test123

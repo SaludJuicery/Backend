@@ -1,10 +1,10 @@
 ﻿// vendor library
 var passport = require('passport');
-var bcrypt = require('bcryptjs');
+//var bcrypt = require('bcryptjs');
 
 // custom library
 // model
-var Model = require('../../models/model');
+//var Model = require('../../models/model');
 
 exports.dbLoginPost = function (req, res, next) {
     
