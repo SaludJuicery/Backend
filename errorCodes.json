@@ -22,7 +22,8 @@
     {
       "401": "Required data not found/input not passed correctly",
       "402": "Database Error",
-      "403": "Duplicate value inserted"
+      "403": "Duplicate value inserted",
+      "404": "Empty Table"
     }
 
   }

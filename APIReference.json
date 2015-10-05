@@ -17,6 +17,17 @@
         "103": "You do not have the permission to access this resource",
         "403": "Duplicate value inserted"
       }
+    },
+
+    "/menu/getCategories":
+    {
+      "required_input": "None, A Post request is good enough",
+      "output": 
+      {
+        "103": "You do not have the permission to access this resource",
+        "402": "Database Error",
+        "404": "Empty Table"
+      }
     }
   }
 }

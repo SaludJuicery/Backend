@@ -21,7 +21,7 @@ var logout = require('./routes/passport/logout.js');
 var passportLocal = require('./routes/passport/passportLocal.js');
 var facebookAuth = require('./routes/passport/facebookAuth.js');
 var createCategory =  require('./routes/menu/createCategory.js')
-
+var getCategories =  require('./routes/menu/getCategories.js')
 
 
 // view engine setup
@@ -104,8 +104,8 @@ passport.use(new LocalStrategy(function (username, password, done) {
 passport.use(new OAuth2Strategy({
     authorizationURL: 'https://www.facebook.com/v2.4/dialog/oauth',
     tokenURL: 'https://graph.facebook.com/oauth/access_token',
-    clientID: '1467907626851148',
-    clientSecret: '2160965bae73bc37c805f6cd2e0fab7e'
+    clientID: process.env.facebook_app_ID,
+    clientSecret: process.env.facebook_app_secret
   },
   function(accessToken, refreshToken, profile, done) {
   	console.log("passport.use OAuth2Strategy invoked");
@@ -122,7 +122,7 @@ app.post('/auth/login', passportLocal.dbLoginPost);
 app.post('/auth/facebookAuth', facebookAuth.fbLoginPost);
 app.post('/auth/logout', logout.logout);
 app.post('/menu/createCategory', createCategory.insertCategory);
-
+app.post('/menu/getCategories', getCategories.sendCategories);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
