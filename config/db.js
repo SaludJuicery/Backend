@@ -10,4 +10,8 @@ var knex = require('knex')({
 	}
 });
 
-module.exports.DB = require('bookshelf')(knex);
+var DB = require('bookshelf')(knex);
+
+module.exports = {
+	DB: DB, knex: knex
+};
