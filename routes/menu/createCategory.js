@@ -4,7 +4,7 @@ var categoryTable = require('../../models/categoryTable').menu_categories;
 /*var mysql      = require('mysql'); // trying this instead of bookshelf
 //connect to the database
     var pool = mysql.createPool({
-		host: 'saluddb.cazv88oyo3vo.us-west-2.rds.amazonaws.com',  // your host
+		host: 'process.env.salud_db_host',  // your host
 		user: 'process.env.salud_db_username',
 		password: 'process.env.salud_db_password', 
 		database: 'process.env.salud_db_database',
