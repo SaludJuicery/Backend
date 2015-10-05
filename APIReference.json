@@ -28,6 +28,18 @@
         "402": "Database Error",
         "404": "Empty Table"
       }
+    },
+
+    "/menu/createMenuItem":
+    {
+      "required_input": "Needs 'item_name','category',price,'description' in post request",
+      "output": 
+      {
+        "777": "Success",
+        "401": "Required data not found/input not passed correctly",
+        "103": "You do not have the permission to access this resource",
+        "403": "Primary or Foriegn Key violation"
+      }
     }
   }
 }

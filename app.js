@@ -20,9 +20,9 @@ var Model = require('./models/model');
 var logout = require('./routes/passport/logout.js');
 var passportLocal = require('./routes/passport/passportLocal.js');
 var facebookAuth = require('./routes/passport/facebookAuth.js');
-var createCategory =  require('./routes/menu/createCategory.js')
-var getCategories =  require('./routes/menu/getCategories.js')
-
+var createCategory =  require('./routes/menu/createCategory.js');
+var getCategories =  require('./routes/menu/getCategories.js');
+var createMenuItem =  require('./routes/menu/createMenuItem.js');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -123,6 +123,8 @@ app.post('/auth/facebookAuth', facebookAuth.fbLoginPost);
 app.post('/auth/logout', logout.logout);
 app.post('/menu/createCategory', createCategory.insertCategory);
 app.post('/menu/getCategories', getCategories.sendCategories);
+app.post('/menu/createMenuItem', createMenuItem.insertMenuItem);
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
