@@ -21,6 +21,7 @@ exports.insertAddons = function (req, res, next) {
     //Knex accepts multi row insert in the following format [{},{}] => we need to model our input that way
     var parsedValues = []; // we will store the the vaules we wish to send to knex here
     try {
+        //more sanity check is to be done
         var arr = req.body.addons.split(',');
     }catch(err){
         return res.send({ "Message": "405" }); // Data not sent in proper format

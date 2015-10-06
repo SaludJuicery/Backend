@@ -1,11 +1,11 @@
 var knex = require('knex')({
 	client: 'mysql',
 	connection: {
-		host: 'saluddb.cazv88oyo3vo.us-west-2.rds.amazonaws.com',  // your host
-		user: 'salud',
-		password: 'SaludRDS', 
-		database: 'saluddb',
-		port: 3306,
+		host: process.env.salud_db_host,  // your host
+		user: process.env.salud_db_user,
+		password: process.env.salud_db_password, 
+		database: process.env.salud_db_database,
+		port: process.env.salud_db_port,
 		charset  : 'utf8'
 	}
 });
