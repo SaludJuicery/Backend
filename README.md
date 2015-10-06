@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/SaludJuicery/Backend.svg?branch=master)](https://travis-ci.org/SaludJuicery/Backend)
+
 # Backend
 Node Backend for Salud Applications
 
