@@ -1,3 +1,5 @@
+https://travis-ci.org/SaludJuicery/Backend.svg?branch=master
+
 # Backend
 Node Backend for Salud Applications
 
