@@ -24,7 +24,8 @@
       "402": "Database Error",
       "403": "Duplicate value inserted",
       "404": "Empty Table",
-      "405": "Data format error"
+      "405": "Data format error",
+      "406": "Record not found"
     }
 
   }
