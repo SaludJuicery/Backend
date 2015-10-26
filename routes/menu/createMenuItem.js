@@ -1,6 +1,6 @@
 // custom library
 // model
-var menu_items_table = require('../../models/menuItem').menu_items;
+var menu_items_table = require('../../models/menuItem').menu_item;
 
 
 exports.insertMenuItem = function (req, res, next) {

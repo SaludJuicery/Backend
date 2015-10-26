@@ -61,7 +61,7 @@
       "required_input": "Needs 'category' passed as part of post method",
       "output": 
       {
-        "777": "Success",
+        "JSON Array": "Success",
         "401": "Required data not found",
         "103": "You do not have the permission to access this resource",
         "403": "DB Error"
