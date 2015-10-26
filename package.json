@@ -21,7 +21,7 @@
     "stylus": "0.42.3",
     "mysql": "*",
     "passport": "*",
-    "passport-facebook-token": "",
+    "passport-facebook-token": "*",
     "passport-oauth2":"*",
     "passport-local": "*",
     "bcryptjs": "*",

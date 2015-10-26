@@ -1,6 +1,6 @@
 // custom library
 // model
-var addons_table = require('../../models/addon').addons;
+//var addons_table = require('../../models/addon').addons;
 var knex = new require('../../config/db').knex;
 
 exports.insertAddons = function (req, res, next) {

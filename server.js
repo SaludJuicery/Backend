@@ -10,7 +10,7 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var OAuth2Strategy = require('passport-oauth2').Strategy;
 var mysql = require('mysql');
-//var FacebookTokenStrategy = require('passport-facebook-token').Strategy;
+var FacebookTokenStrategy = require('passport-facebook-token').Strategy;
 
 var app = express();
 
@@ -24,6 +24,7 @@ var createCategory =  require('./routes/menu/createCategory.js');
 var getCategories =  require('./routes/menu/getCategories.js');
 var createMenuItem =  require('./routes/menu/createMenuItem.js');
 var createAddons =  require('./routes/menu/createAddons.js');
+var getCategoryItems =  require('./routes/menu/getCategoryItems.js');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -76,37 +77,25 @@ passport.use(new LocalStrategy(function (username, password, done) {
     });
 }));
 
-// passport.use(new FacebookTokenStrategy({
-//     clientID: 900851463322720,
-//     clientSecret: 'asdasdadasdad',
-//     authorizationURL: 'https://www.facebook.com/v2.4/dialog/oauth'
-//   },
-//   function(accessToken, refreshToken, profile, done) {
-//     //need to do some checking here - check if profile contains data => token is valid
-//     console.log(profile);
-
-//     //is something is wrong you have to return done(null, false);
-
-
-//     //now that he is authenticated with facebook, i just wanna send the details forward
-//     //now this is a bad thing...i mean any on who can create a valid fb token can use the system if its a valid token
-//     //=> things can be faked...bt finally he has to pay with his credit card so....it shoudnt matter to us
-//     //or we can change this way...provide an interface for vigneswarr to first inset that fb id into db
-//     //here i ill chek if the user exists...if so...ill forward the detials
-//     user = { 'username': profile.id, 'password': accessToken};
-//     return done(null, user);
-
-//     // User.findOrCreate({ username: profile.id }, function (err, user) {
-//     //   return done(err, user);
-//     // });
-//   }
-// ));
+passport.use(new FacebookTokenStrategy({
+    clientID: process.env.facebook_app_ID,
+    clientSecret: process.env.facebook_app_secret
+  },
+  function(accessToken, refreshToken, profile, done) {
+    //need to do some checking here - check if profile contains data => token is valid
+    console.log("AppID: "+process.env.facebook_app_ID);
+    console.log("AppSecret: "+process.env.facebook_app_secret);
+    console.log("Profile object: "+profile);
+    console.log("User object: "+user);
+    return done(null, user);
+  }
+));
 
 passport.use(new OAuth2Strategy({
     authorizationURL: 'https://www.facebook.com/v2.4/dialog/oauth',
     tokenURL: 'https://graph.facebook.com/oauth/access_token',
-    clientID: 'process.env.facebook_app_ID', //uncomment and makesure this is set as env variable
-    clientSecret: 'process.env.facebook_app_secret' //uncomment and makesure this is set as env variable
+    clientID: process.env.facebook_app_ID, //uncomment and makesure this is set as env variable
+    clientSecret: process.env.facebook_app_secret //uncomment and makesure this is set as env variable
   },
   function(accessToken, refreshToken, profile, done) {
   	console.log("passport.use OAuth2Strategy invoked");
@@ -128,7 +117,7 @@ app.post('/menu/category/insert', createCategory.insertCategory);
 app.post('/menu/categories/get', getCategories.sendCategories);
 app.post('/menu/menuItem/insert', createMenuItem.insertMenuItem);
 app.post('/menu/addons/insert', createAddons.insertAddons);
-
+app.post('/menu/category/menu_items/get', getCategoryItems.sendCategoryItems);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

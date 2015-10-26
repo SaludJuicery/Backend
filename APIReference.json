@@ -24,6 +24,7 @@
       "required_input": "None, A Post request is good enough",
       "output": 
       {
+      	"JSON Reply": "Success",
         "103": "You do not have the permission to access this resource",
         "402": "Database Error",
         "404": "Empty Table"
@@ -44,14 +45,26 @@
 
     "/menu/addons/insert":
     {
-      "required_input": "Needs 'addons' passed as CSV string format",
+      "required_input": "Needs 'addons' passed as part of post method",
+      "output": 
+      {
+        "JSON Reply": "Success",
+        "401": "Required data not found",
+        "103": "You do not have the permission to access this resource",
+        "403": "Primary or Foriegn Key violation",
+        "405": "Data format Error"
+      }
+    },
+
+    "/menu/category/menu_items/get":
+    {
+      "required_input": "Needs 'category' passed as part of post method",
       "output": 
       {
         "777": "Success",
         "401": "Required data not found",
         "103": "You do not have the permission to access this resource",
-        "403": "Primary or Foriegn Key violation",
-        "405": "Data format Error"
+        "403": "DB Error"
       }
     }
   }
