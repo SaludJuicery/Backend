@@ -26,6 +26,7 @@ var createMenuItem =  require('./routes/menu/createMenuItem.js');
 var createAddons =  require('./routes/menu/createAddons.js');
 var getCategoryItems =  require('./routes/menu/getCategoryItems.js');
 var updateMenuItem =  require('./routes/menu/updateMenuItem.js');
+var deleteMenuItems = require('./routes/menu/deleteMenuItems.js');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -120,7 +121,7 @@ app.post('/menu/menuItem/insert', createMenuItem.insertMenuItem);
 app.post('/menu/addons/insert', createAddons.insertAddons);
 app.post('/menu/category/menuItems/get', getCategoryItems.sendCategoryItems);
 app.post('/menu/menuItem/update', updateMenuItem.updateMenuItem);
-
+app.post('/menu/menuItems/delete', deleteMenuItems.deleteMenuItems);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
