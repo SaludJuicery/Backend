@@ -79,6 +79,31 @@
         "403": "DB Error",
         "406": "Record not found in DB. No rows updated"
       }
+    },
+
+    "/menu/menuItems/delete":
+    {
+      "required_input": "Needs ,'category','menuItemsToDelete(comma saperated item names)' in post request",
+      "output": 
+      {
+        "777": "Success",
+        "401": "Required data not found/input not passed correctly",
+        "103": "You do not have the permission to access this resource",
+        "403": "DB Error"
+      }
+    },
+
+    "/offers/insert":
+    {
+      "required_input": "Needs ,'offer_name','category','item_name','price','place','start_date (yyyy-mm-dd hh:mm:ss)','end_date(yyyy-mm-dd hh:mm:ss)','offer_description' in post request",
+      "output": 
+      {
+        "777": "Success",
+        "401": "Required data not found/input not passed correctly",
+        "103": "You do not have the permission to access this resource",
+        "403": "DB Error"
+      }
     }
+
   }
 }

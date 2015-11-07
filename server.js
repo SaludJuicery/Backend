@@ -27,6 +27,10 @@ var createAddons =  require('./routes/menu/createAddons.js');
 var getCategoryItems =  require('./routes/menu/getCategoryItems.js');
 var updateMenuItem =  require('./routes/menu/updateMenuItem.js');
 var deleteMenuItems = require('./routes/menu/deleteMenuItems.js');
+var createOffer = require('./routes/offers/createOffer.js');
+// var getOffers = require('./routes/offers/getOffers.js');
+// var updateOffer = require('./routes/offers/updateOffer.js');
+// var deleteOffers = require('./routes/offers/deleteOffers.js');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -122,6 +126,11 @@ app.post('/menu/addons/insert', createAddons.insertAddons);
 app.post('/menu/category/menuItems/get', getCategoryItems.sendCategoryItems);
 app.post('/menu/menuItem/update', updateMenuItem.updateMenuItem);
 app.post('/menu/menuItems/delete', deleteMenuItems.deleteMenuItems);
+//Routes concerning offers
+app.post('/offers/insert', createOffer.createOffer);
+// app.post('/offers/get', getOffers.getOffers);
+// app.post('/offers/update', updateOffer.updateOffer);
+// app.post('/offers/delete', deleteOffer.deleteOffer);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
