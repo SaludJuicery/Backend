@@ -103,6 +103,18 @@
         "103": "You do not have the permission to access this resource",
         "403": "DB Error"
       }
+    },
+
+    "/offers/todays/get":
+    {
+      "required_input": "Needs ,'current_date_time (yyyy-mm-dd hh:mm:ss) - this is the date time at the time in mobile whilesending the request' in post request",
+      "output": 
+      {
+        "JSON": "On succesful execution",
+        "401": "Required data not found/input not passed correctly",
+        "103": "You do not have the permission to access this resource",
+        "403": "DB Error"
+      }
     }
 
   }

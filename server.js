@@ -28,7 +28,7 @@ var getCategoryItems =  require('./routes/menu/getCategoryItems.js');
 var updateMenuItem =  require('./routes/menu/updateMenuItem.js');
 var deleteMenuItems = require('./routes/menu/deleteMenuItems.js');
 var createOffer = require('./routes/offers/createOffer.js');
-// var getOffers = require('./routes/offers/getOffers.js');
+var getTodaysOffers = require('./routes/offers/getTodaysOffers.js');
 // var updateOffer = require('./routes/offers/updateOffer.js');
 // var deleteOffers = require('./routes/offers/deleteOffers.js');
 
@@ -128,7 +128,7 @@ app.post('/menu/menuItem/update', updateMenuItem.updateMenuItem);
 app.post('/menu/menuItems/delete', deleteMenuItems.deleteMenuItems);
 //Routes concerning offers
 app.post('/offers/insert', createOffer.createOffer);
-// app.post('/offers/get', getOffers.getOffers);
+app.post('/offers/todays/get', getTodaysOffers.getTodaysOffers);
 // app.post('/offers/update', updateOffer.updateOffer);
 // app.post('/offers/delete', deleteOffer.deleteOffer);
 

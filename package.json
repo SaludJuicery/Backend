@@ -28,7 +28,9 @@
     "bookshelf": "*",
     "knex": "*",
     "express-session": "*",
-    "jshint": "*"
+    "jshint": "*",
+    "moment":"*",
+    "moment-timezone":"*"
   },
   "scripts": {
     "test": "./node_modules/jshint/bin/jshint ./tests/hello.js"
