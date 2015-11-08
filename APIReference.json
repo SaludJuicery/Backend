@@ -115,6 +115,31 @@
         "103": "You do not have the permission to access this resource",
         "403": "DB Error"
       }
+    },
+
+    "/offer/update":
+    {
+      "required_input": "Needs ,'offer_name (this should already exist)','category','item_name','price','place','start_date (yyyy-mm-dd hh:mm:ss)','end_date(yyyy-mm-dd hh:mm:ss)','offer_description' in post request",
+      "output": 
+      {
+        "777": "Success",
+        "401": "Required data not found/input not passed correctly",
+        "406": "No rows updated",
+        "103": "You do not have the permission to access this resource",
+        "403": "DB Error"
+      }
+    },
+
+    "/offers/update":
+    {
+      "required_input": "Needs comma seperated 'offer_names' as a string in post request",
+      "output": 
+      {
+        "777": "On succesful execution",
+        "401": "Required data not found/input not passed correctly",
+        "103": "You do not have the permission to access this resource",
+        "403": "DB Error"
+      }
     }
 
   }

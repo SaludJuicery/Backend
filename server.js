@@ -30,7 +30,7 @@ var deleteMenuItems = require('./routes/menu/deleteMenuItems.js');
 var createOffer = require('./routes/offers/createOffer.js');
 var getTodaysOffers = require('./routes/offers/getTodaysOffers.js');
 var updateOffer = require('./routes/offers/updateOffer.js');
-// var deleteOffers = require('./routes/offers/deleteOffers.js');
+var deleteOffers = require('./routes/offers/deleteOffers.js');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -129,8 +129,8 @@ app.post('/menu/menuItems/delete', deleteMenuItems.deleteMenuItems);
 //Routes concerning offers
 app.post('/offers/insert', createOffer.createOffer);
 app.post('/offers/todays/get', getTodaysOffers.getTodaysOffers);
-app.post('/offers/update', updateOffer.updateOffer);
-// app.post('/offers/delete', deleteOffer.deleteOffer);
+app.post('/offer/update', updateOffer.updateOffer);
+app.post('/offers/delete', deleteOffers.deleteOffers);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
