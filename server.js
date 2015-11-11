@@ -14,7 +14,7 @@ var FacebookTokenStrategy = require('passport-facebook-token').Strategy;
 
 var app = express();
 
-//Add custom things here
+//Add pths here
 var routes = require('./routes');
 var Model = require('./models/model');
 var logout = require('./routes/passport/logout.js');

@@ -13,14 +13,18 @@ exports.insertMenuItem = function (req, res, next) {
     	return res.send({ "Message": "103" }); // User do not have access to this resource
     
     //checking if required data is present
-    if(!req.body.item_name || !req.body.category || !req.body.price || !req.body.description)
+    if(!req.body.item_name || !req.body.category || !req.body.petite || !req.body.description || !req.body.regular || !req.body.growler || !req.body.is_available_shady || !req.body.is_available_sewickley)
     	return res.send({ "Message": "401" }); // Required data not found in post request
 
     //using the mapped tabed(bookshelf.js maps it for us)
     menu_items_table.forge({item_name: req.body.item_name,
         category: req.body.category,
-        price: req.body.price,
-        description: req.body.description 
+        petite: req.body.petite,
+        regular: req.body.regular,
+        growler: req.body.growler,
+        description: req.body.description,
+        is_available_shady: req.body.is_available_shady,
+        is_available_sewickley: req.body.is_available_sewickley
     }).save(null, {method: 'insert'}).then(function (rows){ // used save(null, {method: 'insert'}), otherwise bookshelf is thinking this as an update query
     	console.log(rows);
     	return res.send({ "Message": "777" }); // Operation Success

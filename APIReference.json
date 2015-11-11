@@ -33,7 +33,7 @@
 
     "/menu/menuItem/insert":
     {
-      "required_input": "Needs 'item_name','category',price,'description' in post request",
+      "required_input": "Needs 'item_name','category','petite (price of small prortion)','regular','growler','description','is_available_shady','is_available_sewickley' in post request",
       "output": 
       {
         "777": "Success",
