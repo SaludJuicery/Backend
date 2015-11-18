@@ -13,6 +13,7 @@ exports.deleteMenuItems = function (req, res, next) {
     if(!req.body.category || !req.body.menuItemsToDelete)
     	return res.send({ "Message": "401" }); // Required data not found in post request
 
+    console.log(req.body);
 
     //Using knex - much simpler than bookshelf.js
     knex('menu_items').whereIn('item_name',req.body.menuItemsToDelete.split(',')).del()
@@ -22,5 +23,4 @@ exports.deleteMenuItems = function (req, res, next) {
       }).catch(function(error) {
         return res.send({ "Message": "403" }); // DB Error
       });
-    
 };

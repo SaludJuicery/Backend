@@ -15,6 +15,8 @@ exports.insertMenuItem = function (req, res, next) {
     //checking if required data is present
     if(!req.body.item_name || !req.body.category || !req.body.petite || !req.body.description || !req.body.regular || !req.body.growler || !req.body.is_available_shady || !req.body.is_available_sewickley)
     	return res.send({ "Message": "401" }); // Required data not found in post request
+    console.log(req.body);
+
 
     //using the mapped tabed(bookshelf.js maps it for us)
     menu_items_table.forge({item_name: req.body.item_name,
