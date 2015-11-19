@@ -13,28 +13,21 @@ exports.updateRestaurantTimings = function (req, res, next) {
     if(!req.body.location || !req.body.timings)
         return res.send({ "Message": "401" }); // Required data not found in post request
 
-    //formatting to JSON format
-    var parsedvals = req.body.timings.split('#');
-
-    for(var i=0; i<parsedvals.length; i++){
-    	parsedvals[i] = parsedvals[i].replace(String.fromCharCode(92),'');
-    	console.log(parsedvals[i]);
-    }	
-
-    //Using knex - much simpler than bookshelf.js
-    knex('restaurent_hours').where('location',req.body.location).del()
-      .then(function(rows) {
-        console.log(rows);
-        knex('restaurent_hours').insert(parsedvals).then(function (rows){ 
-            console.log(rows);
-            return res.send({ "Message": "777" }); // Operation Success
-            }).catch(function (err){
-            console.log(err)
-            return res.send({ "Message": "403" }); // PK / FK Violation
-            });
-      }).catch(function(error) {
+    knex('restaurent_hours').where('location','=',req.body.location).andWhere('day','=',req.body.day)
+    .update({
+        open_time: req.body.open_time,
+        close_time: req.body.close_time,
+        is_open: req.body.is_open
+    })
+    .then(function(response) {
+      console.log(response);
+      if(response == 0)
+        return res.send({"Message": "406"}); //nothing updated
+    
+        return res.send({"Message": "777"});
+    }).catch(function(error) {
         return res.send({ "Message": "403" }); // DB Error
-      });
+    });
 
 };
 

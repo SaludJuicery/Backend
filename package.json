@@ -29,8 +29,7 @@
     "knex": "*",
     "express-session": "*",
     "jshint": "*",
-    "moment":"*",
-    "moment-timezone":"*"
+    "stripe":"*"
   },
   "scripts": {
     "test": "./node_modules/jshint/bin/jshint ./tests/hello.js"
