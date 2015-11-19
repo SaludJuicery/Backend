@@ -10,10 +10,10 @@ exports.updateRestaurantTimings = function (req, res, next) {
         return res.send({ "Message": "103" }); // User do not have access to this resource
     
     //checking if required data is present
-    if(!req.body.location || !req.body.timings)
+    if(!req.body.location || !req.body.day || !req.body.open_time || !req.body.close_time || req.body.is_open)
         return res.send({ "Message": "401" }); // Required data not found in post request
 
-    knex('restaurent_hours').where('location','=',req.body.location).andWhere('day','=',req.body.day)
+    knex('restaurent_hours').where({location: req.body.location}).andWhere({day: req.body.day})
     .update({
         open_time: req.body.open_time,
         close_time: req.body.close_time,

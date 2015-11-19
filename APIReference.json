@@ -144,7 +144,7 @@
 
     "/restaurent/update":
     {
-      "required_input": "Needs ,'offer_name (this should already exist)','category','item_name','price','place','start_date (yyyy-mm-dd hh:mm:ss)','end_date(yyyy-mm-dd hh:mm:ss)','offer_description' in post request",
+      "required_input": "require 'day','location','is_open','open_time','close_time' in post request",
       "output": 
       {
         "777": "Success",
