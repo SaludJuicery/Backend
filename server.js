@@ -34,6 +34,7 @@ var deleteOffers = require('./routes/offers/deleteOffers.js');
 var getRestaurantTimings = require('./routes/timings/getRestaurantTimings.js');
 var updateRestaurantTimings = require('./routes/timings/updateRestaurantTimings.js');
 var getMenu = require('./routes/menu/getMenu.js');
+var getAddons = require('./routes/menu/getAddons.js');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -129,7 +130,6 @@ app.post('/menu/addons/insert', createAddons.insertAddons);
 app.post('/menu/category/menuItems/get', getCategoryItems.sendCategoryItems);
 app.post('/menu/menuItem/update', updateMenuItem.updateMenuItem);
 app.post('/menu/menuItems/delete', deleteMenuItems.deleteMenuItems);
-app.post('/menu/get', getMenu.getMenu);
 //Routes concerning offers
 app.post('/offers/insert', createOffer.createOffer);
 app.post('/offers/todays/get', getTodaysOffers.getTodaysOffers);
@@ -138,6 +138,9 @@ app.post('/offers/delete', deleteOffers.deleteOffers);
 //Config items
 app.post('/restaurant/timings/get', getRestaurantTimings.getRestaurantTimings);
 app.post('/restaurant/timings/update', updateRestaurantTimings.updateRestaurantTimings);
+//Enduser Interfaces
+app.post('/menu/get', getMenu.getMenu);
+app.post('/menu/addons/get', getAddons.getAddons);
 
 
 // catch 404 and forward to error handler
