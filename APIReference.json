@@ -307,6 +307,18 @@
         "103": "You do not have the permission to access this resource",
         "403": "DB Error"
       }
+    },
+
+    "/rewardPoints/get":
+    {
+      "required_input": "post request",
+      "output": 
+      {
+        "JSON": "on succesful execution",
+        "401": "Required data not found/input not passed correctly",
+        "103": "You do not have the permission to access this resource",
+        "403": "DB Error"
+      }
     }
 
   }

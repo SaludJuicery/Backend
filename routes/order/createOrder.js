@@ -6,12 +6,16 @@ var stripe = require("stripe")(process.env.stripe_test_secret);
 
 exports.createOrder = function(req, res, next) {
   //Checking first, if the user is already authenticated => his session is alive! => there exists a 'user' object set in the req
-  if (!req.user) 
-      return res.send({ "Message": "User not authenticated" }); // User Not Authenticated
+  if (!req.user)
+    return res.send({
+      "Message": "User not authenticated"
+    }); // User Not Authenticated
 
   // check if calling user is same as authenticated user
-  if(req.user.username != req.body.email){
-    return res.send({"Message": "User not authorized"});
+  if (req.user.username != req.body.email) {
+    return res.send({
+      "Message": "User not authorized"
+    });
   }
 
   if (!req.body.stripeToken || !req.body.email || !req.body.order || !req.body.location || !req.body.order_sum || !req.body.items)
@@ -28,7 +32,7 @@ exports.createOrder = function(req, res, next) {
       items.[i] = order[i].split(',')[1];
     }*/
 
-  knex.select('*').from('menu_items').whereIn('item_name', order).andWhere('is_available_' + req.body.location, '=', 'false')
+  knex.select('*').from('menu_items').whereIn('item_name', req.body.order).andWhere('is_available_' + req.body.location, '=', 'false')
     .then(function(rows) {
       console.log(rows);
       if (rows.length != 0) {
@@ -133,10 +137,18 @@ exports.createOrder = function(req, res, next) {
               //store ordered items for vivek
               knex('ordered_items_count').insert(parsedValues)
                 .then(function(response) {
-                  console.log(response);
-                  return res.send({
-                    "Message": "Success"
-                  });
+                  //update user's reward points by 1
+                  knex('users').where('username', '=', req.body.email).increment('reward_points', 1)
+                    .then(function(rows) {
+                      console.log(rows);
+                      return res.send({
+                        "Message": "Success"
+                      });
+                    }).catch(function(error) {
+                      return res.send({
+                        "Message": "403"
+                      });
+                    });
                 }).catch(function(error) {
                   console.log(error);
                   return res.send({
