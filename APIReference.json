@@ -319,6 +319,18 @@
         "103": "You do not have the permission to access this resource",
         "403": "DB Error"
       }
+    },
+
+    "/order/complete":
+    {
+      "required_input": "needs 'orderid' in post request",
+      "output": 
+      {
+        "777": "on succesful execution",
+        "401": "Required data not found/input not passed correctly",
+        "103": "You do not have the permission to access this resource",
+        "403": "DB Error"
+      }
     }
 
   }

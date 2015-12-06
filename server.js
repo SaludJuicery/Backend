@@ -46,6 +46,7 @@ var getOrders = require('./routes/order/getOrders.js');
 var cancelOrder = require('./routes/order/cancelOrder.js');
 var dashboard = require('./routes/analytics/dashboard.js');
 var getRewardPoints = require('./routes/order/getRewardPoints.js');
+var completeOrder = require('./routes/order/completeOrder.js');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -229,6 +230,8 @@ app.post('/menu/menuItems/delete', deleteMenuItems.deleteMenuItems);
 //Routes Concerning Orders - Restaurent Side
 app.post('/orders/get', getOrders.getOrders);
 app.post('/order/cancel', cancelOrder.cancelOrder);
+app.post('/order/complete', completeOrder.completeOrder);
+
 //Routes concerning offers
 app.post('/offers/insert', createOffer.createOffer);
 app.post('/offers/todays/get', getTodaysOffers.getTodaysOffers);
