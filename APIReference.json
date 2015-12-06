@@ -177,6 +177,136 @@
         "103": "You do not have the permission to access this resource",
         "403": "DB Error"
       }
+    },
+
+    "/orders/get":
+    {
+      "required_input": "send 'location' in post request",
+      "output": 
+      {
+        "JSON": "On succesful execution",
+        "103": "If you are not authorized user",
+        "401": "Required data not found/input not passed correctly",
+        "103": "You do not have the permission to access this resource",
+        "403": "DB Error"
+      }
+    },
+
+    "/order/cancel":
+    {
+      "required_input": "send 'order_to_cancel' (orderid) in post request",
+      "output": 
+      {
+        "JSON": "On succesful execution, you will get stripe_charge of cancelled transaction",
+        "103": "If you are not authorized user",
+        "401": "Required data not found/input not passed correctly",
+        "103": "You do not have the permission to access this resource",
+        "403": "DB Error"
+      }
+    },
+
+    "/salud/order/insert":
+    {
+      "required_input": "send 'stripeToken, email, order, location, order_sum, items' in post request",
+      "output": 
+      {
+        "777": "On succesful execution",
+        "103": "If you are not authorized user",
+        "401": "Required data not found/input not passed correctly",
+        "103": "You do not have the permission to access this resource",
+        "403": "DB Error"
+      }
+    }, 
+
+    "/offer/update":
+    {
+      "required_input": "send 'offer_name, location, start_date, end_date, offer_description, category, price, item_name' in post request",
+      "output": 
+      {
+        "777": "On succesful execution",
+        "103": "If you are not authorized user",
+        "401": "Required data not found/input not passed correctly",
+        "103": "You do not have the permission to access this resource",
+        "403": "DB Error"
+      }
+    },
+
+    "/offers/delete":
+    {
+      "required_input": "send 'offers_to_delete' (comma seperated offer names) in post request",
+      "output": 
+      {
+        "777": "On succesful execution",
+        "103": "If you are not authorized user",
+        "401": "Required data not found/input not passed correctly",
+        "103": "You do not have the permission to access this resource",
+        "403": "DB Error"
+      }
+    },
+
+    "/restaurant/timings/update":
+    {
+      "required_input": "send 'location, day, open_time, close_time, is_open' in post request",
+      "output": 
+      {
+        "777": "On succesful execution",
+        "103": "If you are not authorized user",
+        "401": "Required data not found/input not passed correctly",
+        "103": "You do not have the permission to access this resource",
+        "403": "DB Error"
+      }
+    },
+
+    "/analytics/dailySales/get":
+    {
+      "required_input": "post request",
+      "output": 
+      {
+        "JSON": "On succesful execution",
+        "103": "If you are not authorized user",
+        "401": "Required data not found/input not passed correctly",
+        "103": "You do not have the permission to access this resource",
+        "403": "DB Error"
+      }
+    },
+
+    "/analytics/hourlySales/get":
+    {
+      "required_input": "post request",
+      "output": 
+      {
+        "JSON": "On succesful execution",
+        "103": "If you are not authorized user",
+        "401": "Required data not found/input not passed correctly",
+        "103": "You do not have the permission to access this resource",
+        "403": "DB Error"
+      }
+    },
+
+    "/analytics/dashboard/get":
+    {
+      "required_input": "post request",
+      "output": 
+      {
+        "JSON": "Dashboard center values, on succesful execution",
+        "103": "If you are not authorized user",
+        "401": "Required data not found/input not passed correctly",
+        "103": "You do not have the permission to access this resource",
+        "403": "DB Error"
+      }
+    },
+
+    "/auth/signup":
+    {
+      "required_input": "send 'username, password' in post request",
+      "output": 
+      {
+        "JSON": "Dashboard center values, on succesful execution",
+        "103": "If you are not authorized user",
+        "401": "Required data not found/input not passed correctly",
+        "103": "You do not have the permission to access this resource",
+        "403": "DB Error"
+      }
     }
 
   }

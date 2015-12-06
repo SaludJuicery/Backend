@@ -29,6 +29,7 @@ exports.dbLoginPost = function (req, res, next) {
 				return res.send({'Message': err.message});
 			} else {
 				req.user = user;
+				console.log(user);
 				return res.send({"Message":"Succesful login"});
 			}
 		});
