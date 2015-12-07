@@ -24,6 +24,12 @@ exports.createOrder = function(req, res, next) {
     }); // Required Data not Found
 
   console.log(req.body.stripeToken);
+  console.log(req.body.email);
+  console.log(req.body.order);
+  console.log(req.body.location);
+  console.log(req.body.order_sum);
+  console.log(req.body.items);
+
 
   var items = req.body.items.split(',');
 

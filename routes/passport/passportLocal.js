@@ -20,7 +20,7 @@ exports.dbLoginPost = function (req, res, next) {
 		if (err) {
 			return res.send({'Message': err.message}, {'request':req});
 		}
-		if (!user) {
+		if (!user && user === null) {
 			console.log("In exports.dbLoginPost, user object is null");
 			return res.send({'Message': 'Username password combination incorrect'});
 		}

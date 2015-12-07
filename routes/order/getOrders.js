@@ -21,14 +21,17 @@ exports.getOrders = function(req, res, next) {
             "Message": "401"
         }); // Required data not found in post request
 
-    var parsedValues = req.body.orders.split(',');
-
     //Using knex - much simpler than bookshelf.js
-    knex.select('orderid', knex.raw('DATE(date)'), knex.raw('TIME(date)'), 'order').from('orders').where('location', '=', req.body.location).andWhere('is_order_served', '=', 'false').orderBy('date', 'desc')
+    knex.select(knex.raw('DATE(date) as date'), knex.raw('TIME(date) as time'), 'order', 'orderid').from('orders').where('location', '=', req.body.location).andWhere('is_order_served', '=', 'false').orderBy('date', 'desc')
         .then(function(rows) {
+            for (var i = 0; i < rows.length; i++) {
+                rows[i]['date'] = rows[i]['date'].toString().substr(1,15);
+            }
             console.log(rows);
+
             return res.send(rows);
         }).catch(function(error) {
+            console.log(error);
             return res.send({
                 "Message": "403"
             });

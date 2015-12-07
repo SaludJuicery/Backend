@@ -77,14 +77,15 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(user, done) {
-	knex.select('*').from('users').where({
+/*	knex.select('*').from('users').where({
 			'username': user.username
 		})
 		.then(function(rows) {
 			done(null, rows[0]);
 		}).catch(function(err) {
 			done(err);
-		});
+		});*/
+	done(null,user);
 });
 
 passport.use(new LocalStrategy(function(username, password, done) {
