@@ -19,32 +19,32 @@ exports.dashboard = function(req, res, next) {
       return res.send({ "Message": "401" }); // Required data not found in post request
 
 
-  var myArray = new Array();
+
+  var jSONdata = {};
 
   //Using knex - much simpler than bookshelf.js
   knex.select(knex.raw('SUM(order_sum) as net_sales'), knex.raw('COUNT(*) as transactions')).from('orders').whereNot({
       is_order_served: 'cancelled'
     }).where('location','=',req.body.location)
     .then(function(rows) {
-      myArray['0'] = rows[0];
+      jSONdata['net_sales'] = rows[0].net_sales;
+      jSONdata['transactions'] = rows[0].transactions;
       //Using knex - much simpler than bookshelf.js
       knex.select('item_name', knex.raw('COUNT(item_name) as item_count')).from('ordered_items_count').groupBy('item_name').orderBy(knex.raw('COUNT(item_name)'), 'desc')
         .then(function(rows) {
-          myArray['1'] = rows;
+          jSONdata['one'] = rows[0].item_name;
+          jSONdata['two'] = rows[1].item_name;
+          jSONdata['three'] = rows[2].item_name;
+          jSONdata['four'] = rows[3].item_name;
+          jSONdata['five'] = rows[4].item_name;
 
-          console.log(myArray)
-
-          return res.send({'Message': myArray});
+          return res.send(jSONdata);
 
         }).catch(function(error) {
-          myArray['top5'] = {};
+          return res.send({"Message": "Error"});
         });
 
     }).catch(function(error) {
-      myArray['total_net_sales'] = 0;
-      myArray['total_transactions'] = 0;
+        return res.send({"Message": "Error"});
     });
-
-
-
 };
