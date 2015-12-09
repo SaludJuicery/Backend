@@ -22,13 +22,13 @@ exports.dashboard = function(req, res, next) {
   var myArray = new Array();
 
   //Using knex - much simpler than bookshelf.js
-  knex.select(knex.raw('SUM(order_sum)'), knex.raw('COUNT(*)')).from('orders').whereNot({
+  knex.select(knex.raw('SUM(order_sum) as net_sales'), knex.raw('COUNT(*) as transactions')).from('orders').whereNot({
       is_order_served: 'cancelled'
-    })
+    }).where('location','=',req.body.location)
     .then(function(rows) {
       myArray['0'] = rows[0];
       //Using knex - much simpler than bookshelf.js
-      knex.select('item_name', knex.raw('COUNT(item_name)')).from('ordered_items_count').where('location','=',req.body.location).groupBy('item_name').orderBy(knex.raw('COUNT(item_name)'), 'desc')
+      knex.select('item_name', knex.raw('COUNT(item_name) as item_count')).from('ordered_items_count').groupBy('item_name').orderBy(knex.raw('COUNT(item_name)'), 'desc')
         .then(function(rows) {
           myArray['1'] = rows;
 
