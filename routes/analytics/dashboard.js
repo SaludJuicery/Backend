@@ -14,6 +14,11 @@ exports.dashboard = function(req, res, next) {
       "Message": "103"
     }); // User do not have access to this resource
 
+          //checking if required data is present
+    if(!req.body.location)
+      return res.send({ "Message": "401" }); // Required data not found in post request
+
+
   var myArray = new Array();
 
   //Using knex - much simpler than bookshelf.js
@@ -23,7 +28,7 @@ exports.dashboard = function(req, res, next) {
     .then(function(rows) {
       myArray['0'] = rows[0];
       //Using knex - much simpler than bookshelf.js
-      knex.select('item_name', knex.raw('COUNT(item_name)')).from('ordered_items_count').groupBy('item_name').orderBy(knex.raw('COUNT(item_name)'), 'desc')
+      knex.select('item_name', knex.raw('COUNT(item_name)')).from('ordered_items_count').where('location','=',req.body.location).groupBy('item_name').orderBy(knex.raw('COUNT(item_name)'), 'desc')
         .then(function(rows) {
           myArray['1'] = rows;
 

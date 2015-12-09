@@ -9,9 +9,14 @@ exports.getHourlySales = function (req, res, next) {
     //checking if user has access to the resource
     if (req.user.username !== 'salud.partner@gmail.com')
       return res.send({ "Message": "103" }); // User do not have access to this resource
+
+            //checking if required data is present
+    if(!req.body.location)
+      return res.send({ "Message": "401" }); // Required data not found in post request
+
     
     //Using knex - much simpler than bookshelf.js
-    knex.select(knex.raw('hour(date)'), knex.raw('SUM(order_sum)')).from('orders').where(knex.raw('DATE(date) = CURDATE()')).groupByRaw(knex.raw('hour(date)'))
+    knex.select(knex.raw('hour(date)'), knex.raw('SUM(order_sum)')).from('orders').where(knex.raw('DATE(date) = CURDATE()')).andWhere('location','=',req.body.location).groupByRaw(knex.raw('hour(date)'))
       .then(function(rows) {
         console.log(rows);
         return res.send(rows);
