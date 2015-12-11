@@ -18,7 +18,7 @@ exports.createOrder = function(req, res, next) {
     });
   }
 
-  if (!req.body.stripeToken || !req.body.email || !req.body.order || !req.body.location || !req.body.order_sum || !req.body.items)
+  if (!req.body.stripeToken || !req.body.email || !req.body.order || !req.body.location || !req.body.order_sum || !req.body.items || !req.body.hour || !req.body.minute)
     return res.send({
       "Message": "103"
     }); // Required Data not Found
@@ -121,6 +121,11 @@ exports.createOrder = function(req, res, next) {
           // Once he has been charged for and charge is succesfull, save customer to DB for later use
           console.log("succesfully charged :" + charge.customer);
           console.log("Charge ID :" + charge.id);
+ 
+          var formattedDate = (new Date()).toISOString().substring(0, 10)
+          formattedDate = formattedDate+" "+req.body.hour+":"+req.body.minute+":00";
+          console.log(formattedDate)
+
 
           //Using knex - much simpler than bookshelf.js
           knex('orders').insert({
@@ -130,7 +135,8 @@ exports.createOrder = function(req, res, next) {
               order_sum: req.body.order_sum,
               order: req.body.order,
               location: req.body.location,
-              last4: charge.source.last4
+              last4: charge.source.last4,
+              date: formattedDate
             })
             .then(function(response) { //store items in a day
               console.log(items);

@@ -22,10 +22,10 @@ exports.getOrders = function(req, res, next) {
         }); // Required data not found in post request
 
     //Using knex - much simpler than bookshelf.js
-    knex.select(knex.raw('DATE(date) as date'), knex.raw('TIME(date) as time'), 'order', 'orderid').from('orders').where('location', '=', req.body.location).andWhere('is_order_served', '=', 'false').orderBy('date', 'desc')
+    knex.select(knex.raw('DATE(date) as date'), knex.raw('TIME(date) as time'), 'order', 'orderid', 'email').from('orders').where('location', '=', req.body.location).andWhere('is_order_served', '=', 'false').orderBy('date', 'desc')
         .then(function(rows) {
             for (var i = 0; i < rows.length; i++) {
-                rows[i]['date'] = rows[i]['date'].toString().substr(1,15);
+                rows[i]['date'] = rows[i]['date'].toString().substr(4,11);
             }
             console.log(rows);
 
