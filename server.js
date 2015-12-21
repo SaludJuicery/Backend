@@ -47,6 +47,7 @@ var cancelOrder = require('./routes/order/cancelOrder.js');
 var dashboard = require('./routes/analytics/dashboard.js');
 var getRewardPoints = require('./routes/order/getRewardPoints.js');
 var completeOrder = require('./routes/order/completeOrder.js');
+var getUsers = require('./routes/random/getUsers.js');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -219,6 +220,7 @@ app.post('/auth/facebookAuth', facebookAuth.fbLoginPost);
 app.post('/auth/logout', logout.logout);
 app.post('/auth/signup', signup.signup);
 app.post('/auth/googleAuth', google.google);
+app.post('/users/get', getUsers.getUsers);
 
 //Routes Concerning Menu
 app.post('/menu/category/insert', createCategory.insertCategory);

@@ -331,6 +331,18 @@
         "103": "You do not have the permission to access this resource",
         "403": "DB Error"
       }
+    },
+
+    "/users/get":
+    {
+      "required_input": "None",
+      "output": 
+      {
+        "JSON": "on succesful execution",
+        "101": "User not authenticated",
+        "103": "You do not have the permission to access this resource",
+        "403": "DB Error"
+      }
     }
 
   }
